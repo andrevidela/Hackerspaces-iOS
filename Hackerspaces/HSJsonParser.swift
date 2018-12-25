@@ -15,7 +15,8 @@ func parseHackerspaceDataModel(json: HSData, name apiName: String, url: String) 
     do {
         rawParsed = try JSONDecoder().decode(HackerspaceData.self, from: json)
     } catch let error {
-        print(error.localizedDescription)
+        print("\(error.localizedDescription), error: \(error)")
+
         rawParsed = nil
     }
 
@@ -113,7 +114,6 @@ struct ContactData: Codable {
     let irc: String?
     let twitter: String?
     let facebook: String?
-    let google: String?
     let identica: String?
     let foursquare: String?
     let email: String?
@@ -126,7 +126,6 @@ struct ContactData: Codable {
          ircURL: String? = nil,
          twitterHandle: String? = nil,
          facebook: String? = nil,
-         googlePlus: String? = nil,
          identica: String? = nil,
          foursquareID: String? = nil,
          email: String? = nil,
@@ -140,7 +139,6 @@ struct ContactData: Codable {
         self.irc = ircURL
         self.twitter = twitterHandle
         self.facebook = facebook
-        self.google = googlePlus
         self.identica = identica
         self.foursquare = foursquareID
         self.email = email
