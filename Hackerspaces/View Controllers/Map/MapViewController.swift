@@ -16,7 +16,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var centerButtonOutlet: UIButton! {
         didSet {
-            centerButtonOutlet.setImage(centerButtonOutlet.currentImage?.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: UIControlState.normal)
+            centerButtonOutlet.setImage(centerButtonOutlet.currentImage?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate), for: UIControl.State.normal)
             centerButtonOutlet.tintColor = Theme.conditionalTintColor
         }
     }
@@ -56,8 +56,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
 
     func centerMapOnLocation(_ location: CLLocation) {
         let regionRadius: CLLocationDistance = 5000
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
-                                                                  regionRadius * 2.0, regionRadius * 2.0)
+        let coordinateRegion = MKCoordinateRegion(center: location.coordinate,
+                                                  latitudinalMeters: regionRadius * 2.0, longitudinalMeters: regionRadius * 2.0)
         map.setRegion(coordinateRegion, animated: true)
     }
 
@@ -80,9 +80,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        refreshButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.refresh, target: self, action: #selector(refresh))
+        refreshButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.refresh, target: self, action: #selector(refresh))
         self.navigationItem.rightBarButtonItem = refreshButton
-        let indicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+        let indicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
         indicator.startAnimating()
         loadingIndicator = UIBarButtonItem(customView: indicator)
         refresh(sender: refreshButton)

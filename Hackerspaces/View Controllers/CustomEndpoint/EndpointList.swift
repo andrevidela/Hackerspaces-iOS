@@ -51,7 +51,7 @@ class EndPointTableViewController: UITableViewController {
         if let dequeued = tableView.dequeueReusableCell(withIdentifier: cellID) {
             cell = dequeued
         } else {
-            cell = UITableViewCell.init(style: UITableViewCellStyle.subtitle, reuseIdentifier: cellID)
+            cell = UITableViewCell.init(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: cellID)
         }
         if indexPath.section == 0 {
             cell.textLabel?.text = R.string.localizable.name()
@@ -67,13 +67,13 @@ class EndPointTableViewController: UITableViewController {
     }
 
 
-    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return indexPath.section == 0 ? .insert : .delete
     }
 
 
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .insert {
             performSegue(withIdentifier: "ShowAddEndpoint", sender: nil)
         }

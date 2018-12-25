@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		950AF2981D88CC500068F29E /* DisplayErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950AF2971D88CC500068F29E /* DisplayErrorViewController.swift */; };
 		950AF29B1D89BB7C0068F29E /* PrefPaneTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950AF29A1D89BB7C0068F29E /* PrefPaneTableViewController.swift */; };
+		951D34DC21D05B75009889D5 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951D34DB21D05B74009889D5 /* R.generated.swift */; };
 		9525AB7D1B8622C10061A1E6 /* SelectedHackerspaceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9525AB7C1B8622C10061A1E6 /* SelectedHackerspaceTableViewController.swift */; };
 		9525AB801B868D160061A1E6 /* HSTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9525AB7F1B868D160061A1E6 /* HSTitleTableViewCell.swift */; };
 		9525AB821B8748010061A1E6 /* HSMapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9525AB811B8748010061A1E6 /* HSMapTableViewCell.swift */; };
@@ -37,7 +38,6 @@
 		9597A1AB1B79252F0061A1E6 /* VCMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9597A1AA1B79252F0061A1E6 /* VCMapView.swift */; };
 		9597A1AE1B7932100061A1E6 /* DataCache.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9597A1AC1B7932100061A1E6 /* DataCache.xcdatamodeld */; };
 		9598B91B1FAE35BD0061A1E6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9598B9191FAE35BD0061A1E6 /* Localizable.strings */; };
-		9598B91E1FAE36B70061A1E6 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9598B91D1FAE36B70061A1E6 /* R.generated.swift */; };
 		9598B9211FAE37420061A1E6 /* RawDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9573A2AE1B936F960061A1E6 /* RawDataTableViewCell.swift */; };
 		9598B9221FAE37420061A1E6 /* RawDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9573A2AE1B936F960061A1E6 /* RawDataTableViewCell.swift */; };
 		959D61AE1F3B79DB0061A1E6 /* FutureUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953C513A1B8F49190061A1E6 /* FutureUtils.swift */; };
@@ -47,7 +47,6 @@
 		95A594A21B893FB60061A1E6 /* Haneke.framework.dSYM in Debug */ = {isa = PBXBuildFile; fileRef = 95A5949E1B893FB60061A1E6 /* Haneke.framework.dSYM */; };
 		95A594A41B893FB60061A1E6 /* SwiftHTTP.framework.dSYM in Debug */ = {isa = PBXBuildFile; fileRef = 95A594A01B893FB60061A1E6 /* SwiftHTTP.framework.dSYM */; };
 		95A594A51B893FB60061A1E6 /* Swiftz.framework.dSYM in Debug */ = {isa = PBXBuildFile; fileRef = 95A594A11B893FB60061A1E6 /* Swiftz.framework.dSYM */; };
-		95ACC0221F7702EF0061A1E6 /* UIUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B38C4E1F62B09C0061A1E6 /* UIUtils.swift */; };
 		95ACC0261F771D370061A1E6 /* CustomEndpointList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95ACC0251F771D370061A1E6 /* CustomEndpointList.storyboard */; };
 		95ACC02B1F771DA30061A1E6 /* EndpointList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ACC02A1F771DA30061A1E6 /* EndpointList.swift */; };
 		95ADEF991B8B53580061A1E6 /* SpaceAPIFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADEF981B8B53580061A1E6 /* SpaceAPIFunctions.swift */; };
@@ -117,6 +116,7 @@
 /* Begin PBXFileReference section */
 		950AF2971D88CC500068F29E /* DisplayErrorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayErrorViewController.swift; sourceTree = "<group>"; };
 		950AF29A1D89BB7C0068F29E /* PrefPaneTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrefPaneTableViewController.swift; sourceTree = "<group>"; };
+		951D34DB21D05B74009889D5 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		9525AB7C1B8622C10061A1E6 /* SelectedHackerspaceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedHackerspaceTableViewController.swift; sourceTree = "<group>"; };
 		9525AB7F1B868D160061A1E6 /* HSTitleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HSTitleTableViewCell.swift; sourceTree = "<group>"; };
 		9525AB811B8748010061A1E6 /* HSMapTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HSMapTableViewCell.swift; sourceTree = "<group>"; };
@@ -146,7 +146,6 @@
 		9598B9181FAE34640061A1E6 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		9598B91A1FAE35BD0061A1E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9598B91C1FAE35C20061A1E6 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
-		9598B91D1FAE36B70061A1E6 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		9598B92B1FAE42A50061A1E6 /* Rswift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Rswift.framework; path = Carthage/Build/iOS/Rswift.framework; sourceTree = "<group>"; };
 		959D61AF1F3B7E350061A1E6 /* HSJsonParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HSJsonParser.swift; sourceTree = "<group>"; };
 		95A19D6C1F772D480061A1E6 /* AddEndpointViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEndpointViewController.swift; sourceTree = "<group>"; };
@@ -293,7 +292,7 @@
 		95643FB01B729B3E0061A1E6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				9598B91D1FAE36B70061A1E6 /* R.generated.swift */,
+				951D34DB21D05B74009889D5 /* R.generated.swift */,
 				9597A1AC1B7932100061A1E6 /* DataCache.xcdatamodeld */,
 				95643FB11B729B3E0061A1E6 /* Info.plist */,
 				9598B9191FAE35BD0061A1E6 /* Localizable.strings */,
@@ -473,7 +472,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = Fixme;
 				TargetAttributes = {
 					95643FAC1B729B3E0061A1E6 = {
@@ -559,13 +558,15 @@
 			files = (
 			);
 			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
 			);
 			name = R.Swift;
 			outputPaths = (
+				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"$SRCROOT/rswift\" generate \"$SRCROOT\"\n";
+			shellScript = "\"$SRCROOT/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
 		};
 		95A5949C1B893E7E0061A1E6 /* Carthage copy-frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -608,7 +609,7 @@
 				9525AB7D1B8622C10061A1E6 /* SelectedHackerspaceTableViewController.swift in Sources */,
 				950AF2981D88CC500068F29E /* DisplayErrorViewController.swift in Sources */,
 				95643FB31B729B3E0061A1E6 /* AppDelegate.swift in Sources */,
-				9598B91E1FAE36B70061A1E6 /* R.generated.swift in Sources */,
+				951D34DC21D05B75009889D5 /* R.generated.swift in Sources */,
 				9597A1AE1B7932100061A1E6 /* DataCache.xcdatamodeld in Sources */,
 				959D61B01F3B7E350061A1E6 /* HSJsonParser.swift in Sources */,
 				9525AB821B8748010061A1E6 /* HSMapTableViewCell.swift in Sources */,
@@ -628,7 +629,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95ACC0221F7702EF0061A1E6 /* UIUtils.swift in Sources */,
 				95BD26941F40F40E0061A1E6 /* HSTitleTableViewCell.swift in Sources */,
 				9564551C1F3141FD0061A1E6 /* Constants.swift in Sources */,
 				9564551D1F3142A50061A1E6 /* SpaceAPIFunctions.swift in Sources */,
@@ -714,12 +714,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -769,12 +771,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -829,7 +833,7 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -859,7 +863,7 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

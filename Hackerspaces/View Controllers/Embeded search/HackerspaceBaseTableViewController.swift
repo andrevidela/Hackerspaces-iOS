@@ -122,7 +122,7 @@ class HackerspaceBaseTableViewController: UITableViewController, UIViewControlle
         if #available(iOS 11.0, *) {
             self.navigationController?.navigationBar.prefersLargeTitles = true
         } 
-        self.refreshControl?.addTarget(self, action: #selector(HackerspaceBaseTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
+        self.refreshControl?.addTarget(self, action: #selector(HackerspaceBaseTableViewController.refresh(_:)), for: UIControl.Event.valueChanged)
         // Force touch code
         self.refresh(refreshControl!)
         registerForPreviewing(with: self, sourceView: tableView)
@@ -229,7 +229,7 @@ class HackerspaceBaseTableViewController: UITableViewController, UIViewControlle
     override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
         switch segue.destination {
         case let SHVC as SelectedHackerspaceTableViewController :
-            guard let hackerspaceKey = sender as? String else {return print("cannot prepare for segue, sender was not a string, instead it was: \(sender)")}
+            guard let hackerspaceKey = sender as? String else {return print("cannot prepare for segue, sender was not a string, instead it was: \(String(describing: sender))")}
             guard let data = (get(hackerspaces, key: hackerspaceKey) ?? get(customEndpoints, key: hackerspaceKey))  else {return print("could not find hackerspace with name \(hackerspaceKey)")}
             switch data.0 {
             case .finished(let data): SHVC.prepare(data)

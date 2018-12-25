@@ -69,7 +69,7 @@ class PrefPaneTableViewController: UITableViewController {
         super.viewDidLoad()
         refresh.attributedTitle = NSAttributedString.init(string: "Enable Advanced Mode")
         refresh.tintColor = UIColor.clear
-        refresh.addTarget(self, action: #selector(PrefPaneTableViewController.toggleDebug), for: UIControlEvents.valueChanged)
+        refresh.addTarget(self, action: #selector(PrefPaneTableViewController.toggleDebug), for: UIControl.Event.valueChanged)
         self.refreshControl = refresh
     }
 

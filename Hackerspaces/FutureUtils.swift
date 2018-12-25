@@ -26,7 +26,7 @@ struct FutureUtils {
 
     ///Converts a list of futures of Option into a future of list of non-nil values
     static func flattenOptionalFuture<T>(_ list: [Future<T?, NoError>]) -> Future<[T], NoError> {
-        return list.sequence().map { $0.flatMap(identity)}
+        return list.sequence().map { $0.compactMap(identity)}
     }
 
 }

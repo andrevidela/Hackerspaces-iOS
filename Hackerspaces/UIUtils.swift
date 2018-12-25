@@ -23,10 +23,10 @@ extension UIViewController {
     ///   - canceled: The callback when the cancel button is push (optional)
     ///   - dismissed: The callback when the alert is dismissed (optional)
     func displayAlert(alertTitle: String?,
-                      alertStyle preferredStyle: UIAlertControllerStyle = .alert,
+                      alertStyle preferredStyle: UIAlertController.Style = .alert,
                       message: String?,
                       buttonTitle button: String?,
-                      buttonStyle style: UIAlertActionStyle = .default,
+                      buttonStyle style: UIAlertAction.Style = .default,
                       confirmed onclick: ((UIAlertAction) -> ())? = nil,
                       canceled oncancel: ((UIAlertAction) -> ())? = nil,
                       dismissed callback: (() -> ())? = nil) -> () {
@@ -55,9 +55,9 @@ enum Theme {
         print("enabling dark mode")
         UINavigationBar.appearance().barTintColor = UIColor.darkBackground
         UINavigationBar.appearance().tintColor = UIColor.darkTint
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.themeWhite]
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.themeWhite]
         if #available(iOS 11.0, *) {
-            UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.themeWhite]
+            UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.themeWhite]
         }
         UITabBar.appearance().barTintColor = UIColor.darkBackground
         UITabBar.appearance().tintColor = UIColor.darkTint
@@ -74,7 +74,7 @@ enum Theme {
         UIButton.appearance().tintColor = UIColor.darkTint
         UITableView.appearance().separatorColor = UIColor.gray
         UISearchBar.appearance().tintColor = UIColor.darkTint
-        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.white]
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
 
     }
 
@@ -101,7 +101,7 @@ enum Theme {
         UIButton.appearance().tintColor = UIColor.defaultBlueTint
         UITableView.appearance().separatorColor = UIColor(red: 214/255, green: 213/255, blue: 217/255, alpha: 1.0)
         UISearchBar.appearance().tintColor = UIColor.defaultBlueTint
-        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.black]
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
 
     }
 

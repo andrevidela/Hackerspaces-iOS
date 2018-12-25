@@ -37,7 +37,7 @@ class SelectedHackerspaceTableViewController: UITableViewController {
         return SharedData.favorites.getRow(named: hackerspaceData.apiName) != nil
     }
 
-    fileprivate struct storyboard {
+    fileprivate struct Storyboard {
         static let CellIdentifier = "Cell"
         static let TitleIdentifier = "TitleCell"
         static let GeneralInfoIdentifier = "GeneralInfoCell"
@@ -59,7 +59,7 @@ class SelectedHackerspaceTableViewController: UITableViewController {
         }
 
         tableView.estimatedRowHeight = 200
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         reloadData()
     }
 
@@ -122,31 +122,31 @@ class SelectedHackerspaceTableViewController: UITableViewController {
         case 0: return 150
         case 1: return 132
         case 2: return 150
-        default : return UITableViewAutomaticDimension
+        default : return UITableView.automaticDimension
         }
     }
 
     func reuseTitleCell(_ indexPath: IndexPath) -> UITableViewCell {
-        if let titleCell = tableView.dequeueReusableCell(withIdentifier: storyboard.TitleIdentifier, for: indexPath) as? HackerspaceTitleTableViewCell{
+        if let titleCell = tableView.dequeueReusableCell(withIdentifier: Storyboard.TitleIdentifier, for: indexPath) as? HackerspaceTitleTableViewCell{
             titleCell.logo.image = nil
             hackerspaceData?.logoURL >>- URL.init(string: ) >>- { titleCell.logo.hnk_setImageFromURL($0) }
             return titleCell
         } else {
-            return tableView.dequeueReusableCell(withIdentifier: storyboard.TitleIdentifier, for: indexPath)
+            return tableView.dequeueReusableCell(withIdentifier: Storyboard.TitleIdentifier, for: indexPath)
         }
     }
 
     func reuseMapCell(_ indexPath: IndexPath) -> UITableViewCell {
-        if let mapCell = tableView.dequeueReusableCell(withIdentifier: storyboard.MapIdentifier, for: indexPath) as? HackerspaceMapTableViewCell {
+        if let mapCell = tableView.dequeueReusableCell(withIdentifier: Storyboard.MapIdentifier, for: indexPath) as? HackerspaceMapTableViewCell {
             mapCell.location = hackerspaceData.toSpaceLocation()
             return mapCell
         } else {
-            return tableView.dequeueReusableCell(withIdentifier: storyboard.TitleIdentifier, for: indexPath)
+            return tableView.dequeueReusableCell(withIdentifier: Storyboard.TitleIdentifier, for: indexPath)
         }
     }
 
     func reuseGeneralInfoCell(_ indexPath: IndexPath) -> UITableViewCell {
-        if let mapCell = tableView.dequeueReusableCell(withIdentifier: storyboard.GeneralInfoIdentifier, for: indexPath) as? HSGeneralInfoTableViewCell {
+        if let mapCell = tableView.dequeueReusableCell(withIdentifier: Storyboard.GeneralInfoIdentifier, for: indexPath) as? HSGeneralInfoTableViewCell {
             if let data = hackerspaceData {
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateStyle = DateFormatter.Style.medium
@@ -160,7 +160,7 @@ class SelectedHackerspaceTableViewController: UITableViewController {
             }
             return mapCell
         } else {
-            return tableView.dequeueReusableCell(withIdentifier: storyboard.TitleIdentifier, for: indexPath)
+            return tableView.dequeueReusableCell(withIdentifier: Storyboard.TitleIdentifier, for: indexPath)
         }
     }
 
