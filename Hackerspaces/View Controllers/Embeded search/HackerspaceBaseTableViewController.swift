@@ -10,10 +10,18 @@ import UIKit
 import BrightFutures
 import Swiftz
 
+func convertError(spaceError: SpaceAPIError) -> NetworkState {
+    switch spaceError {
+    case .parseError(let message): return .parsing(message: message)
+    case _: return .unresponsive(error: spaceError)
+    }
+}
+
 enum NetworkState {
     case finished(ParsedHackerspaceData)
     case loading
     case unresponsive(error: SpaceAPIError)
+    case parsing(message: String)
 
     var isDone: Bool {
         get {
@@ -31,6 +39,7 @@ enum NetworkState {
                                                          : R.string.localizable.hackerspaceClosed()
         case .loading: return R.string.localizable.loading()
         case .unresponsive(_): return R.string.localizable.unresponsive()
+        case .parsing(message: _): return R.string.localizable.parseError()
         }
     }
 }
@@ -46,7 +55,7 @@ func updateDataSource(api: [(String, String)],
                 set(addOrUpdate(key: hs, value: (finalState, true), get()))
             }
             .onFailure { error in
-                set(addOrUpdate(key: hs, value: (NetworkState.unresponsive(error: error), true), get()))
+                set(addOrUpdate(key: hs, value: (convertError(spaceError: error), true), get()))
         }
     }
 }
@@ -222,7 +231,7 @@ class HackerspaceBaseTableViewController: UITableViewController, UIViewControlle
         case .unresponsive(let err) where SharedData.isInDebugMode(): handleUnresponsiveError(error: err)
         case .unresponsive: break
         case .loading: print("still loading")
-
+        case .parsing: print("parse error")
         }
     }
 

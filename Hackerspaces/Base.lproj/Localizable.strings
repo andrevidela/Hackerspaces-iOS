@@ -37,6 +37,7 @@
 //Embeded Search
 "Loading" = "loading";
 "Unresponsive" = "unresponsive";
+"ParseError" = "Parse error";
 
 //Selected Hackerspace
 "SelectedHSViewTitle" = "hackerspace status";

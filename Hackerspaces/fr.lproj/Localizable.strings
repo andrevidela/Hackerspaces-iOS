@@ -35,8 +35,9 @@
 "ReportBugAnswer" = "Vous pouvez partager quelque problème que vous rencontrez avec l'app sur la page Github du projet à l'adresse https://github.com/zhaar/Hackerspaces-iOS/issues. Vous pouvez même permettre d'incorporer de nouvelles fonctionnalités en créant une issue ou une pull request.";
 
 //Embeded Search
-"Loading" = "chargement";
-"Unresponsive" = "pas de réponse";
+"Loading" = "Chargement";
+"Unresponsive" = "Pas de réponse";
+"ParseError" = "Erreur de format";
 
 //Selected Hackerspace
 "SelectedHSViewTitle" = "Status du Hackerspace";
@@ -45,8 +46,8 @@
 
 // General
 "Delete" = "Supprimer";
-"HackerspaceOpen" = "ouvert";
-"HackerspaceClosed" = "fermé";
+"HackerspaceOpen" = "Ouvert";
+"HackerspaceClosed" = "Fermé";
 "Edit" = "Modifier";
 "Name" = "Nom";
 "Ok" = "Ok";
