@@ -9,6 +9,7 @@
 import Foundation
 import BrightFutures
 import Result
+import Swiftz
 
 extension Dictionary {
     func split(_ discriminationFunction: (Key, Value) -> Bool) -> ([Key: Value],[Key : Value]) {
@@ -93,7 +94,7 @@ extension Array {
         }
     }
     
-    func foldl<S>(_ initial: S,fn: (_ acc:S, _ elem: Element) -> S) -> S {
+    func foldl<S>(_ initial: S,fn: (_ acc: S, _ elem: Element) -> S) -> S {
         var result = initial
         for e in self {
             result = fn(result, e)
@@ -153,4 +154,21 @@ prefix func ?<= <T: Comparable>(rhs: T) -> (T) -> Bool {
 infix operator |=> : NilCoalescingPrecedence
 func |=> <T, E: Error>(lhs: T?, rhs: E) -> Result<T, E> {
     return lhs.map({ .success($0) }) ?? .failure(rhs)
+}
+
+extension Either: Codable where L: Codable, R: Codable {
+    public init(from decoder: Decoder) throws {
+        do {
+            self = .Left(try L(from: decoder))
+        } catch {
+            self = .Right(try R(from: decoder))
+        }
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        switch self {
+        case .Left(let l): try l.encode(to: encoder)
+        case .Right(let r): try r.encode(to: encoder)
+        }
+    }
 }

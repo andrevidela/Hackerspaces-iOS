@@ -9,6 +9,8 @@
 //Favorites list
 "FavoriteHackerspaceTitle" = "Favorites";
 "EmptyFavoriteListMessage" = "Select your favorite hackerspace from search or map";
+"ParsingErrorMessage" = "Error with parsing response";
+"UnresponsiveErrorMessage" = "Error with HTTP response";
 
 //CustomEndpoint
 "Custom_Endpoint" = "Custom Endpoint"; //Also for Embeded Search

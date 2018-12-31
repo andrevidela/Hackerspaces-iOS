@@ -54,7 +54,8 @@ extension SpaceAPI {
     }
 
     static private func parseHackerspace(json: HSData, url: String, name: String) -> Result<ParsedHackerspaceData, SpaceAPIError>{
-        return parseHackerspaceDataModel(json: json, name: name, url: url) |=> .parseError(String(data: json, encoding: String.Encoding.utf8) ?? "response isn't utf8 encoded")
+        let r = parseHackerspaceDataModel(json: json, name: name, url: url)
+        return r.mapError(SpaceAPIError.parseError)
     }
 
     static func getParsedHackerspace(url: String, name: String, fromCache cache: Bool = true) -> Future<ParsedHackerspaceData, SpaceAPIError> {

@@ -12,15 +12,29 @@ import Swiftz
 
 func convertError(spaceError: SpaceAPIError) -> NetworkState {
     switch spaceError {
-    case .parseError(let message): return .parsing(message: message)
-    case _: return .unresponsive(error: spaceError)
+    case .parseError(.stateFieldMissing(file: let file)):
+        return .parsing(message: "State field is missing from json:\n\(file)")
+    case .parseError(.gpsLocationMissing(let file)):
+        return .parsing(message: "Gps information is missing from json:\n\(file)")
+    case .parseError(.spaceNameMissing(let file)):
+        return .parsing(message: "Space name is missing from json:\n\(file)")
+    case .parseError(.jsonParsingError(let file, let message)):
+        return .parsing(message: "Json error:\n\(message)\nin file:\n\(file)")
+    case .parseError(.fileNotUTF8Encoded):
+        return .parsing(message: "File is not UTF8")
+    case .dataCastError(let data):
+        return .unresponsive(message: "Problem with data: \(String(describing: data))")
+    case .unknownError(let error):
+        return .unresponsive(message: "Unknown error: \(error)")
+    case .httpRequestError(let error):
+        return .unresponsive(message: "Http error: \(error)")
     }
 }
 
 enum NetworkState {
     case finished(ParsedHackerspaceData)
     case loading
-    case unresponsive(error: SpaceAPIError)
+    case unresponsive(message: String)
     case parsing(message: String)
 
     var isDone: Bool {
@@ -226,12 +240,17 @@ class HackerspaceBaseTableViewController: UITableViewController, UIViewControlle
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let (hsName, state) = hackerspaceStatus(indexPath: indexPath)
+        let debug = SharedData.isInDebugMode()
         switch state {
         case .finished(_): performSegue(withIdentifier: UIConstants.showHSSearch.rawValue, sender: hsName)
-        case .unresponsive(let err) where SharedData.isInDebugMode(): handleUnresponsiveError(error: err)
-        case .unresponsive: break
         case .loading: print("still loading")
-        case .parsing: print("parse error")
+        case .parsing(let m):
+            if debug {
+                handleUnresponsiveError(message: R.string.localizable.parsingErrorMessage(), content: m)
+            }
+        case .unresponsive(let message): if debug {
+            handleUnresponsiveError(message: R.string.localizable.unresponsiveErrorMessage(), content: message)
+            }
         }
     }
 
@@ -251,37 +270,18 @@ class HackerspaceBaseTableViewController: UITableViewController, UIViewControlle
         }
     }
 
-    func handleUnresponsiveError(error: SpaceAPIError) -> () {
-
-        func messageHandler(err: SpaceAPIError) -> (String, String?) {
-            switch error {
-            case .dataCastError(data: let data):
-                return ("Could not parse data as JSON", data.description)
-            case .httpRequestError(error: _):
-                return ("Unknown HTTP error", nil)
-            case .parseError(let json):
-                return ("An error occured while parsing data. Maybe the data doesn't comply with SpaceAPI v0.13", "\ncould not parse:  \(json)")
-            case .unknownError(error: let error):
-                return ("Unknown error", error.localizedDescription)
-
-            }
-        }
+    func handleUnresponsiveError(message: String, content: String) -> () {
 
         let title = "Hackerspace Unresponsive"
-        var actions:[UIAlertAction] = [UIAlertAction(title: R.string.localizable.ok(), style: .default, handler: nil)]
+        var actions: [UIAlertAction] = [UIAlertAction(title: R.string.localizable.ok(), style: .default, handler: nil)]
 
-        let (msg, sender) = messageHandler(err: error)
-        if let s = sender {
-            actions.append(UIAlertAction(title: R.string.localizable.more_details(), style: .default, handler: {_ in
-                self.performSegue(withIdentifier: UIConstants.showErrorDetail.rawValue, sender: s)
-            }))
-        }
-        let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
-        actions.foreach(alert.addAction)
-        //FIXME: There is a bug around here, the "More detail" button is added twice to the array but only once in the alert
         actions.append(UIAlertAction(title: R.string.localizable.more_details(), style: .default, handler: {_ in
-            self.performSegue(withIdentifier: UIConstants.showErrorDetail.rawValue, sender: error.localizedDescription)
+            self.performSegue(withIdentifier: UIConstants.showErrorDetail.rawValue, sender: content)
         }))
+
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        actions.foreach(alert.addAction)
+
         present(alert, animated: true, completion: nil)
         
     }

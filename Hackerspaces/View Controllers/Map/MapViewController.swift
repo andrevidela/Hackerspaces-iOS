@@ -67,9 +67,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
 
         SpaceAPI.loadHackerspaceList(fromCache: true).onSuccess { hsDict in
             let list = hsDict.map({ (name, url) in
-                SpaceAPI.getParsedHackerspace(url: url, name: name, fromCache: false).map { parsed in
-                    self.map.addAnnotation(parsed.toSpaceLocation())
-                }
+                SpaceAPI.getParsedHackerspace(url: url, name: name, fromCache: false)
+                    .map(SpaceLocation.init)
+                    .map(self.map.addAnnotation)
             })
             list.sequence().onComplete { _ in
                 self.navigationItem.rightBarButtonItem = self.refreshButton

@@ -23,7 +23,7 @@ enum SpaceAPIConstants : String {
 }
 
 enum SpaceAPIError: Error {
-    case parseError(String)
+    case parseError(ParsingErrors)
     case dataCastError(data: Data)
     case unknownError(error: Error)
     case httpRequestError(error: Error)

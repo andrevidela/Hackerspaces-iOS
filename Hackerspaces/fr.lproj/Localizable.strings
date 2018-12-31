@@ -9,6 +9,8 @@
 //Favorites list
 "FavoriteHackerspaceTitle" = "Favoris";
 "EmptyFavoriteListMessage" = "Selectionnez vos Hackerspace favoris depuis la recherche ou la carte";
+"ParsingErrorMessage" = "Erreur avec le contenu de la réponse";
+"UnresponsiveErrorMessage" = "Erreur avec la réopnse HTTP";
 
 //CustomEndpoint
 "Custom_Endpoint" = "Serveur personalisé";

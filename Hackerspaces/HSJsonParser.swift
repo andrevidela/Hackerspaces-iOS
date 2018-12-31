@@ -9,28 +9,45 @@
 import Foundation
 import Swiftz
 import MapKit
+import Result
 
-func parseHackerspaceDataModel(json: HSData, name apiName: String, url: String) -> ParsedHackerspaceData? {
-    let rawParsed: HackerspaceData?
+enum ParsingErrors: Error {
+    case gpsLocationMissing(file: String)
+    case stateFieldMissing(file: String)
+    case spaceNameMissing(file: String)
+    case jsonParsingError(file: String, message: String)
+    case fileNotUTF8Encoded
+}
+
+func parseHackerspaceDataModel(json: HSData, name apiName: String, url: String) -> Result<ParsedHackerspaceData, ParsingErrors>  {
+    guard let file = String(data: json, encoding: .utf8) else {
+        return .failure(.fileNotUTF8Encoded)
+    }
+    let parsed: HackerspaceData
     do {
-        rawParsed = try JSONDecoder().decode(HackerspaceData.self, from: json)
+        parsed = try JSONDecoder().decode(HackerspaceData.self, from: json)
     } catch let error {
-        print("\(error.localizedDescription), error: \(error)")
-
-        rawParsed = nil
+        return .failure(.jsonParsingError(file: file, message: "\(error)"))
     }
 
-    return rawParsed.map { parsed in
-        ParsedHackerspaceData(apiVersion: parsed.api,
-                              apiEndpoint: url,
-                              apiName: apiName,
-                              name: parsed.space,
-                              logoURL: parsed.logo,
-                              websiteURL: parsed.url,
-                              state: parsed.state,
-                              location: parsed.location,
-                              contact: parsed.contact)
+    guard case .Left(let location) = parsed.location else {
+        return .failure(ParsingErrors.gpsLocationMissing(file: file))
     }
+    guard let space = parsed.space else {
+        return .failure(ParsingErrors.spaceNameMissing(file: file))
+    }
+    guard let state = parsed.state else {
+        return .failure(ParsingErrors.stateFieldMissing(file: file))
+    }
+    return .success(ParsedHackerspaceData(apiVersion: parsed.api,
+                                          apiEndpoint: url,
+                                          apiName: apiName,
+                                          name: space,
+                                          logoURL: parsed.logo,
+                                          websiteURL: parsed.url,
+                                          state: state,
+                                          location: location,
+                                          contact: parsed.contact))
 }
 
 struct ParsedHackerspaceData: Codable {
@@ -66,6 +83,10 @@ struct LocationData: Codable {
     let address: String?
     let lat: Float
     let lon: Float
+}
+
+struct MissingGPSData: Codable {
+    let address: String?
 }
 
 struct StateData: Codable {
@@ -150,13 +171,13 @@ struct ContactData: Codable {
 
 struct HackerspaceData: Codable {
     let api: String
-    let space: String
+    let space: String?
     let logo: String
     let url: String
-    let location: LocationData
+    let location: Either<LocationData, MissingGPSData>
     let spacefed: SpaceFedData?
     let cam: [String]?
-    let state: StateData
+    let state: StateData?
     let events: [EventData]?
     let contact: ContactData
 }

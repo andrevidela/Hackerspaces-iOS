@@ -8,6 +8,7 @@
 
 import Foundation
 import MapKit
+import Swiftz
 
 public enum Testing {
     static public func isTestingUI() -> Bool {
@@ -21,7 +22,7 @@ public enum Testing {
                                                          space: "Open Hackerspace",
                                                          logo: "",
                                                          url: "",
-                                                         location: LocationData.init(address: nil, lat: 0, lon: 0),
+                                                         location: .Left(LocationData.init(address: nil, lat: 0, lon: 0)),
                                                          spacefed: nil,
                                                          cam: nil,
                                                          state: StateData(open: true, lastchange: nil, trigger_person: nil, message: "The space is open", icon: nil),
@@ -32,7 +33,7 @@ public enum Testing {
                                                            space: "Closed Hackerspace",
                                                            logo: "",
                                                            url: "",
-                                                           location: LocationData.init(address: nil, lat: 0, lon: 0),
+                                                           location: .Left(LocationData.init(address: nil, lat: 0, lon: 0)),
                                                            spacefed: nil,
                                                            cam: nil,
                                                            state: StateData(open: false, lastchange: nil, trigger_person: nil, message: "The space is closed", icon: nil),

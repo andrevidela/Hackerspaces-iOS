@@ -15,7 +15,9 @@ class SpaceLocation : NSObject {
     let location: CLLocationCoordinate2D
     init(hackerspace: ParsedHackerspaceData) {
         self.hackerspace = hackerspace
-        self.location = CLLocationCoordinate2D(latitude: CLLocationDegrees(hackerspace.location.lat), longitude: CLLocationDegrees(hackerspace.location.lon))
+        self.location = CLLocationCoordinate2D(latitude: CLLocationDegrees(hackerspace.location.lat),
+                                               longitude: CLLocationDegrees(hackerspace.location.lon))
+
     }
 }
 
